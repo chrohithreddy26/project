@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Netflix Clone</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #000;
+      color: #fff;
+    }
+
+    .banner {
+      height: 300px;
+      background-image: url('https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRcfQpNsKyuHWu-_aOHYud3kuqhn-qzGT4BG7UxAQZV9KBuZKHu');
+      background-size: cover; 
+      background-position: center; 
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      color: #e7e1e1;
+      padding: 70px;}
+
+    nav {
+      background-color: #111;
+      padding: 10px;
+      text-align: center;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #fff;
+      margin: 0 15px;
+    }
+
+    section {
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #e50914;
+    }
+
+    .buttons {
+      margin-top: 20px;
+    }
+
+    .buttons button {
+      font-size: 18px; 
+      padding: 10px 20px; 
+      margin: 0 10px;
+      cursor: pointer;
+    }
+
+    .play {
+      background-color: #e50914;
+      color: #fff;
+    }
+
+    .info {
+      background-color: #fff;
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">TV Shows</a>
+    <a href="#">Movies</a>
+    <a href="#">My List</a>
+  </nav>
+
+  <section>
+    <h1>Welcome to My Netflix Clone</h1>
+    <p>Discover a world of entertainment.</p>
+  </section>
+
+  <section class="banner">
+    <h1 style="font-size: 36px;">Bhola Shankar</h1>
+    <p style="font-size:23px">Something is stranger than usual...</p>
+    <div class="buttons">
+        <button class="play">Play</button>
+        <button class="info">More Info</button>
+    </div>
+  </section>
+
+</body>
+</html>
