@@ -13,7 +13,7 @@
 
     .banner {
       height: 300px;
-      background-image: url('https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRcfQpNsKyuHWu-_aOHYud3kuqhn-qzGT4BG7UxAQZV9KBuZKHu');
+      background-image: url();
       background-size: cover; 
       background-position: center; 
       display: flex;
