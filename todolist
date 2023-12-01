@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
- <style>
-body {
+ <style>body {
             font-family: Arial, sans-serif;
             background-color: #65d665;
             margin: 0;
@@ -124,10 +123,16 @@ body {
         }
     }
     
-    function deleteTask(id) {
+  
+        function deleteTask(id) {
+    const confirmation = confirm('Are you sure you want to delete this task?');
+
+    if (confirmation) {
         tasks = tasks.filter(task => task.id !== id);
         renderTasks();
     }
+}
+
     
     function editTask(id) {
         const newText = prompt('Edit task:');
