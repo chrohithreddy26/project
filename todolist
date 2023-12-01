@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <style>
+body {
+            font-family: Arial, sans-serif;
+            background-color: #65d665;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        
+        .container {
+            background-color: #ddd843;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center; }
+        h1 {
+            color: #f51607;
+            margin-bottom: 20px;
+        }
+        
+        #tasks-container {
+            margin-top: 10px;
+            width: 100%; 
+        }
+        
+        .task {
+            display: flex;
+            align-items :center;
+            text-align:left;
+            padding: 4px;
+            border-bottom: 1px solid #ccc; 
+            background-color: #f1eeee;
+            border-radius: 4px;
+            width: 100%; 
+            box-sizing: border-box; 
+            margin-bottom: 10px;
+        }
+        
+        .task span {
+            flex-grow: 1;
+            margin-right: 0px;
+        }
+        
+        .task-buttons {
+            display: flex;
+            gap: 10px; }
+        
+        .task-buttons button {
+            cursor: pointer;
+            padding: 8px;
+            background-color: #e74c3c;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        .task-buttons button:hover {
+            background-color: #c0392b;
+        }
+        
+        input[type="text"] {
+            padding: 8px;
+            width: 70%;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            margin-top: 5px;
+
+        }
+        
+        button {
+            padding: 8px;
+            cursor: pointer;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #2980b9;
+        }
+        
+        </style>
+        <body>
+
+<div class="container">
+    <h1>To-Do List</h1>
+    <div id="tasks-container"></div>
+    <div>
+        <input type="text" id="newTask" placeholder="Add a new task">
+        <button onclick="addTask()">Add Task</button>
+    </div>
+</div>
+
+<script>let tasks = [];
+
+    function addTask() {
+        const newTaskInput = document.getElementById('newTask');
+        const taskText = newTaskInput.value.trim();
+    
+        if (taskText !== '') {
+            const task = {
+                id: Date.now(),
+                text: taskText
+            };
+    
+            tasks.push(task);
+            newTaskInput.value = '';
+    
+            renderTasks();
+        }
+    }
+    
+    function deleteTask(id) {
+        tasks = tasks.filter(task => task.id !== id);
+        renderTasks();
+    }
+    
+    function editTask(id) {
+        const newText = prompt('Edit task:');
+        if (newText !== null) {
+            const taskIndex = tasks.findIndex(task => task.id === id);
+            tasks[taskIndex].text = newText;
+            renderTasks();
+        }
+    }
+    
+    function renderTasks() {
+        const tasksContainer = document.getElementById('tasks-container');
+        tasksContainer.innerHTML = '';
+    
+        tasks.forEach(task => {
+            const taskDiv = document.createElement('div');
+            taskDiv.classList.add('task');
+    
+            const taskText = document.createElement('span');
+            taskText.textContent = task.text;
+    
+            const taskButtons = document.createElement('div');
+            taskButtons.classList.add('task-buttons');
+    
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Delete';
+            deleteButton.addEventListener('click', () => deleteTask(task.id));
+    
+            const editButton = document.createElement('button');
+            editButton.textContent = 'Edit';
+            editButton.addEventListener('click', () => editTask(task.id));
+    
+            taskButtons.appendChild(deleteButton);
+            taskButtons.appendChild(editButton);
+    
+            taskDiv.appendChild(taskText);
+            taskDiv.appendChild(taskButtons);
+    
+            tasksContainer.appendChild(taskDiv);
+        });
+    }
+    </script>
+</body>
+</html>
