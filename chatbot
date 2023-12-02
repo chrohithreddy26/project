@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Real-Time Chat</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #25462a;        }
+
+        #chat-container {
+            width: 300px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            border-bottom-right-radius: 10px;
+            border-bottom-left-radius: 10px;
+            background-color: #d2dfb4;
+        }
+
+        #messages {
+            overflow-y: auto;
+            height: 300px;
+            border-bottom: 1px solid #ccc;
+            margin-bottom: 10px;
+        }
+
+        .message {
+            padding: 8px;
+            margin: 5px;
+            border-radius: 5px;
+            max-width: 70%;
+        }
+
+        .user-message {
+            background-color: #69756b;
+            color: #fff;
+            margin-left: auto;
+            width: fit-content;
+        }
+
+        .bot-message {
+            background-color: #5182aa;
+            color: #fff;
+            align-self: flex-end;
+            width: fit-content;
+             
+        }
+        #message-input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+
+        #send-button {
+            width: 30%;
+            padding: 8px;
+            box-sizing: border-box;
+            background-color: #4caf50;
+            color: #fff;
+            cursor: pointer;
+            margin-top: 2px;
+            border-radius: 5px;
+            margin-left:100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="chat-container">
+        <div id="messages"></div>
+        <input type="text" id="message-input" placeholder="Type your message...">
+        <button id="send-button" onclick="sendMessage()">Send</button>
+    </div>
+
+    <script>
+        function sendMessage() {
+            var messageInput = document.getElementById('message-input');
+            var messagesContainer = document.getElementById('messages');
+
+            var messageText = messageInput.value.trim();
+            if (messageText === '') return;
+
+            var messageElement = document.createElement('div');
+            messageElement.className = 'message user-message';
+            messageElement.textContent = messageText;
+
+            messagesContainer.appendChild(messageElement);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+            setTimeout(function() {
+                var responseElement = document.createElement('div');
+                responseElement.className = 'message bot-message';
+                responseElement.textContent = getRandomResponse();
+
+                messagesContainer.appendChild(responseElement);
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }, 500);
+
+            messageInput.value = '';
+        }
+
+        function getRandomResponse() {
+            var responses = [
+                "Hello!",
+                "How are you?",
+                "Nice to meet you!",
+                "I'm a simple bot.",
+                "Ask me anything!",
+                "I don't know what to say.",
+                "Tell me a joke!"
+            ];
+
+            var randomIndex = Math.floor(Math.random() * responses.length);
+            return responses[randomIndex];
+        }
+    </script>
+</body>
+</html>
