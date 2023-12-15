@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+        .accordion {
+            display: flex;
+            flex-direction: column;
+            max-width: 400px;
+        }
+
+        .accordion-item {
+            margin-bottom: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .accordion-title {
+            background-color: #f0f0f0;
+            padding: 10px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .accordion-description {
+            padding: 10px;
+        }
+
+        .add-button {
+            margin-top: 8px;
+            cursor: pointer;
+            color: blue;
+        }
+    </style>
+    <title>Dynamic Accordion</title>
+</head>
+<body>
+
+<div class="accordion" id="accordion"></div>
+<button class="add-button" onclick="addAccordionItem()">Add Title</button>
+<button class="add-button" onclick="addDescription()">Add Description</button>
+
+<script>
+    let accordionCounter = 1;
+
+    function addAccordionItem() {
+
+  let title = prompt("Enter title");
+  
+  if (title) {
+    const accordion = document.getElementById('accordion');
+    const accordionItem = document.createElement('div');
+    accordionItem.classList.add('accordion-item');
+
+    const accordionTitle = document.createElement('div');
+    accordionTitle.classList.add('accordion-title');
+    accordionTitle.textContent = title;
+    accordionTitle.addEventListener('click', toggleAccordion);
+    accordionItem.appendChild(accordionTitle);
+
+    accordion.appendChild(accordionItem);
+    
+  } else {
+    alert('Please enter a title.');
+  }
+}
+
+function toggleAccordion() {
+  const content = this.nextElementSibling; 
+  content.style.display = content.style.display === 'block' ? 'none' : 'block';
+}
+
+
+
+
+    function addDescription() {
+      const description =prompt("Enter Description");
+        const accordion = document.getElementById('accordion');
+        const accordionItem = accordion.lastElementChild;
+
+        if (!accordionItem) {
+            alert('Please add a title before adding a description.');
+            return;
+        }
+
+        const accordionDescription = document.createElement('div');
+        accordionDescription.classList.add('accordion-description');
+        accordionDescription.textContent = 'Description : ' + (description);
+        accordionItem.appendChild(accordionDescription);
+    }
+
+    function toggleAccordion() {
+        const accordionItem = this.parentElement;
+        accordionItem.classList.toggle('active');
+    }
+</script>
+
+</body>
+</html>
