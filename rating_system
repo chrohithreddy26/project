@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+    body {
+            margin: 0;
+            padding: 0;
+            display:flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #52da64;
+        }
+        .outer-box {
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #f4f5f1;
+        }
+
+        
+        .star-rating {
+            font-size: 0;
+            white-space: nowrap;
+            text-align: center;
+        }
+
+        .star-rating input {
+            display: none;
+        }
+
+        .star-rating label {
+            display: inline-block;
+            font-size: 3rem;
+            color: #ccc;
+            cursor: pointer;
+        }
+
+        .star-rating label:before {
+            content: '\2605'; 
+        }
+
+        .star-rating input:checked + label,
+        .star-rating input:checked + label:before {
+            color: #f39c12; 
+        }
+
+        .comment-section {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .comment-section textarea {
+            border-radius: 5px;
+            width: 300px;
+            height: 100px;
+            resize: none;
+            margin-top: 5px;
+            padding-right: 100px;
+            border: solid 1px;
+        }
+
+    </style>
+</head>
+<body>
+<div><h2><i>star-rating</h2></i></div>
+<div class="outer-box">
+    <div class="star-rating">
+        <input type="radio" name="rating" id="star1" value="1">
+        <label for="star1"></label>
+        <input type="radio" name="rating" id="star2" value="2">
+        <label for="star2"></label>
+        <input type="radio" name="rating" id="star3" value="3">
+        <label for="star3"></label>
+        <input type="radio" name="rating" id="star4" value="4">
+        <label for="star4"></label>
+        <input type="radio" name="rating" id="star5" value="5">
+        <label for="star5"></label>
+    </div>
+    <div class="comment-section">
+        <textarea id="comments" placeholder="Leave your comments here..."></textarea>
+    </div>
+    <div id="rating" style="text-align: center;"></div>
+    <div id="comment" style="text-align: center;" spellcheck="true"></div>
+</div>
+
+<script>
+    const ratingInputs = document.querySelectorAll('.star-rating input');
+    const commentTextarea = document.getElementById('comments');
+
+    ratingInputs.forEach((input, index) => {
+        input.addEventListener('change', () => {
+            const selectedRating = input.value;
+            document.getElementById("rating").innerHTML = "Given-Rating-is: " +selectedRating;
+
+            ratingInputs.forEach((starInput, i) => {
+                starInput.checked = i <= index;
+                const label = starInput.nextElementSibling;
+                label.style.color = i <= index ? "#f39c12" : "#ccc";
+            });
+        });
+    });
+
+    commentTextarea.addEventListener('input', () => {
+        const comments = commentTextarea.value;
+        document.getElementById("comment").innerHTML = "Given-Comment-is: " + comments;
+    });
+</script>
+
+</body>
+</html>
+</html>
