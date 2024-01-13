@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Rohith Reddy Ch - Portfolio</title>
+<style>body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    opacity: 0; 
+    animation: fadeIn 1s ease-in-out forwards; 
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 30px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #7d2ae8;
+}
+
+header p {
+    margin-top: 5px;
+    font-size: 1.2em;
+    color: #bbb;
+}
+
+section {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    opacity: 0; 
+    animation: slideUp 1s ease-in-out forwards; 
+}
+
+@keyframes slideUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+section h2 {
+    color: #7d2ae8;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    margin-bottom: 10px;
+}
+
+.project-item,
+.education-item {
+    margin-bottom: 20px;
+}
+
+.project-item h3,
+.education-item h3 {
+    color: #333;
+    font-size: 1.5em;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}
+
+.social-icons  {
+    display: inline-block;
+    margin-right: 15px;
+    color: #f7f2f2;
+    text-decoration: none;
+    font-size: 1em;
+    transition: transform 0.3s ease-in-out; 
+}
+
+.social-icons a {
+    color: #fff; 
+}
+
+.social-icons i {
+    color: #f7f6f8;
+}
+
+.social-icons a:hover i {
+    color: #f10808;
+    transform: scale(1.9);
+}
+</style></head>
+
+<body>
+    <header>
+        <h1>Rohith Reddy Ch</h1>
+        <p>Enthusiastic IT fresher with strong education and technical skills</p>
+    </header>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <p>
+            I am an enthusiastic IT fresher with a strong educational background and technical skills. My goal is to secure
+            an entry-level position where I can contribute to organizational growth while continuously enhancing my professional
+            capabilities.
+        </p>
+        <h2>Skills</h2>
+        <ul>
+            <li>Programming Languages: Python, Java</li>
+            <li>Web Development Skills: HTML, CSS, JavaScript, React, Node.js</li>
+            <li>Database Management: SQL, MongoDB</li>
+        </ul>
+    </section>
+
+    <section id="education">
+        <h2>Education</h2>
+
+        <div class="education-item">
+            <h3>Sphoorthy Engineering College</h3>
+            <p>Bachelor of Technology in Computer Science and Engineering</p>
+            <p>June 2019 - July 2023</p>
+            <p>Cumulative GPA: 6.6/10.00</p>
+        </div>
+
+        <div class="education-item">
+            <h3>Narayana Junior College, Hyderabad</h3>
+            <p>Board of Intermediate Education</p>
+            <p>June 2017 - April 2019</p>
+            <p>Cumulative GPA: 9.19/10.00</p>
+        </div>
+
+        <div class="education-item">
+            <h3>Narayana E-techno School, Hyderabad</h3>
+            <p>Board of Secondary Education</p>
+            <p>June 2016 - April 2017</p>
+            <p>Cumulative GPA: 8.30/10.00</p>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>Projects</h2>
+
+        <div class="project-item">
+            <h3>E-Authentication System— Android App</h3>
+            <p>The main objective is to implement a secure login authentication system utilizing two-factor authentications.
+                By using the concept two-factor authentication could help to increase the strength of the login system and
+                implement an authentication mechanism using One Time Password (OTP) and QR code.</p>
+        </div>
+
+        <div class="project-item">
+            <h3>Smart LPG Cylinder Monitoring and Explosion Management System</h3>
+            <p>This project consists of a microcontroller ESP32 used to monitor and control the entire system. MQ-6 is used
+                as the gas sensor, when the gas sensor senses the leakage of LPG and gives input signal to the controller,
+                which switches on the exhaust fan and stops the flow of gas using a servo motor.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>Contact me: chrohithreddy26@gmail.com</p>
+        <div class="social-icons">
+            <a href="https://www.linkedin.com/in/rohith-reddy-ch-715112290/" target="_blank"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+            <a href="https://github.com/chrohithreddy26" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+        </div>
+        
+    </footer>
+</body>
+
+</html>
