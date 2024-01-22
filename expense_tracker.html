@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #3498db;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 320px; 
+        }
+
+        h1 {
+            text-align: center;
+            color: #3498db; 
+        }
+
+        .balance-container {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .balance-container h2 {
+            margin: 0;
+            color: #2ecc71; 
+        }
+
+        .transaction-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .transaction-form label {
+            margin-right: 10px;
+            color: #3498db; 
+        }
+
+        .transaction-form input, .transaction-form select {
+            padding: 8px;
+            margin-bottom: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .transaction-form .input-group {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .transaction-form button {
+            padding: 10px;
+            background-color: #2ecc71; 
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .transaction-form button:hover {
+            background-color: #27ae60; 
+        }
+
+        .transactions-container {
+            text-align: center;
+        }
+
+        .transactions-container h2 {
+            color: #3498db; 
+        }
+
+        .transactions-container ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .transactions-container li {
+            margin-bottom: 12px;
+            padding: 12px;
+            background-color: #ecf0f1; 
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .transactions-container li span {
+            color: #059bff; 
+            margin-top: 8px;
+            font-size: 0.8em;
+        }
+    </style>
+    <title>Expense Tracker</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Expense Tracker</h1>
+        <div class="balance-container">
+            <h2>Balance: ₹<span id="balance">0.00</span></h2>
+        </div>
+        <div class="transaction-form">
+            <label for="type">Type:</label>
+            <select id="type">
+                <option value="income">Income</option>
+                <option value="expense">Expense</option>
+            </select>
+            <div class="input-group">
+                <div>
+                    <label for="amount">Amount:</label>
+                    <input type="number" id="amount" placeholder="Enter amount">
+                </div>
+                <div>
+                    <label for="date">Date:</label>
+                    <input type="date" id="date">
+                </div>
+            </div>
+            <button onclick="addTransaction()">Add Transaction</button>
+        </div>
+        <div class="transactions-container">
+            <h2>Transactions</h2>
+            <ul id="transactions-list"></ul>
+        </div>
+    </div>
+
+    <script>
+        let balance = 0;
+        const transactionsList = document.getElementById('transactions-list');
+        const balanceElement = document.getElementById('balance');
+
+        function addTransaction() {
+            const type = document.getElementById('type').value;
+            const amount = parseFloat(document.getElementById('amount').value);
+            const date = document.getElementById('date').value;
+
+            if (isNaN(amount) || amount <= 0 || date === '') {
+                alert('Please enter valid amount and date.');
+                return;
+            }
+
+            const transaction = {
+                type,
+                amount,
+                date
+            };
+
+            if (type === 'income') {
+                balance += amount;
+            } else {
+                balance -= amount;
+            }
+
+            updateBalance();
+            displayTransaction(transaction);
+        }
+
+        function updateBalance() {
+            balanceElement.textContent = balance.toFixed(2);
+        }
+
+        function displayTransaction(transaction) {
+            const listItem = document.createElement('li');
+            listItem.innerHTML = `
+                <span>${transaction.type.charAt(0).toUpperCase() + transaction.type.slice(1)}: ₹${transaction.amount.toFixed(2)}</span>
+                <span>${transaction.date}</span>`;
+            transactionsList.appendChild(listItem);
+        }
+
+        updateBalance();  
+    </script>
+</body>
+</html>
